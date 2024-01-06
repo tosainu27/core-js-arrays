@@ -19,7 +19,7 @@
  *    getIntervalArray(-2, 2)  => [ -2, -1, 0, 1, 2 ]
  *    getIntervalArray(0, 100) => [ 0, 1, 2, ..., 100 ]
  *    getIntervalArray(3, 3) => [ 3 ]
- */
+ */ 
 function getIntervalArray(/* start, end */) {
   throw new Error('Not implemented');
 }
