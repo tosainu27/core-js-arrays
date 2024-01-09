@@ -25,38 +25,12 @@ function sumArrays(arr1, arr2) {
   return arr;
 }
 
-/**
- * Returns an index of the specified element in array or -1 if element is not found.
- *
- * @param {array} arr - The input array.
- * @param {any} value - Element to search.
- * @return {number} - An index of the specified element.
- *
- * @example
- *    findElement(['Ace', 10, true], 10) => 1
- *    findElement(['Array', 'Number', 'string'], 'Date') => -1
- *    findElement([0, 1, 2, 3, 4, 5], 5) => 5
- */
-function findElement(/* arr, value */) {
-  throw new Error('Not implemented');
+function findElement(arr, value) {
+  return arr.indexOf(value, 0);
 }
 
-/**
- * Returns a number of all occurrences of the specified item in an array.
- *
- * @param {array} arr - The input array.
- * @param {any} item - Element to search.
- * @return {number} - Number of found items.
- *
- * @example
- *    findAllOccurrences([ 0, 0, 1, 1, 1, 2 ], 1) => 3
- *    findAllOccurrences([ 1, 2, 3, 4, 5 ], 0) => 0
- *    findAllOccurrences([ 'a','b','c','c' ], 'c') => 2
- *    findAllOccurrences([ null, undefined, null ], null) => 2
- *    findAllOccurrences([ true, 0, 1, 'true' ], true) => 1
- */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurrences(arr, item) {
+  return arr.reduce((sum, cur) => sum + (cur === item), 0);
 }
 
 /**
@@ -75,36 +49,15 @@ function removeFalsyValues(/* arr */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns an array containing the lengths of each string in a specified array of strings.
- *
- * @param {array} arr - The input array.
- * @return {array} - The array of string lengths.
- *
- * @example
- *    getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]) => [ 0, 1, 2, 3, 4 ]
- *    getStringsLength([ 'angular', 'react', 'ember' ]) => [ 7, 5, 5 ]
- */
-function getStringsLength(/* arr */) {
-  throw new Error('Not implemented');
+function getStringsLength(arr) {
+  return arr.map((item) => item.length);
 }
 
-/**
- * Returns the average of all items in the specified array of numbers.
- * The result should be rounded to two decimal places.
- *
- * @param {array} arr - The input array
- * @return {number} - The average of all items
- *
- * @example
- *   getAverage([]) => 0
- *   getAverage([ 1, 2, 3 ]) => 2
- *   getAverage([ -1, 1, -1, 1 ]) => 0
- *   getAverage([ 1, 10, 100, 1000 ])  => 277,75
- *   getAverage([ 2, 3, 3 ])  => 2,67
- */
-function getAverage(/* arr */) {
-  throw new Error('Not implemented');
+function getAverage(arr) {
+  return (
+    Math.round((arr.reduce((sum, cur) => sum + cur, 0) / arr.length) * 100) /
+      100 || 0
+  );
 }
 
 /**
