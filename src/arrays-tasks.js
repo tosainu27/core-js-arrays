@@ -33,20 +33,8 @@ function findAllOccurrences(arr, item) {
   return arr.reduce((sum, cur) => sum + (cur === item), 0);
 }
 
-/**
- * Removes falsy values from the specified array.
- * Falsy values: false, null, 0, "", undefined, and NaN.
- *
- * @param {array} arr - The input array.
- * @return {array} - The array without falsy values.
- *
- * @example
- *    removeFalsyValues([ 0, false, 'cat', NaN, true, '' ]) => [ 'cat', true ]
- *    removeFalsyValues([ 1, 2, 3, 4, 5, 'false' ]) => [ 1, 2, 3, 4, 5, 'false' ]
- *    removeFalsyValues([ false, 0, NaN, '', undefined ]) => [ ]
- */
-function removeFalsyValues(/* arr */) {
-  throw new Error('Not implemented');
+function removeFalsyValues(arr) {
+  return arr.filter((item) => Boolean(item) !== false);
 }
 
 function getStringsLength(arr) {
@@ -60,125 +48,36 @@ function getAverage(arr) {
   );
 }
 
-/**
- * Checks if all strings in an array have the same length.
- *
- * @param {array} arr - The array of strings to be checked.
- * @return {boolean} - True if all strings have the same length, false otherwise.
- *
- * @example
- *    isSameLength(['orange', 'banana', 'cherry']) => true
- *    isSameLength(['cat', 'dog', 'elephant']) => false
- */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  return arr.every((val) => val.length === arr[0].length);
 }
 
-/**
- * Checks if there are elements in the array where the value is equal to its index.
- *
- * @param {array} arr - The array of elements to be checked.
- * @return {boolean} - True if there are elements with value equal to their index, false otherwise.
- *
- * @example
- *    isValueEqualsIndex([0, 1, 2, 3, 4]) => true
- *    isValueEqualsIndex([2, 1, 0, 4, 5]) => true
- *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
- */
-function isValueEqualsIndex(/* arr */) {
-  throw new Error('Not implemented');
+function isValueEqualsIndex(arr) {
+  return arr.some((item, index) => item === index);
 }
 
-/**
- * Inserts the item into specified array at specified index.
- *
- * @param {array} arr - The input array.
- * @param {any} item - The item to insert.
- * @param {number} index - Specified index.
- *
- * @example
- *    insertItem([ 1, 3, 4, 5 ], 2, 1)  => [ 1, 2, 3, 4, 5 ]
- *    insertItem([ 1, 'b', 'c'], 'x', 0) => [ 'x', 1, 'b', 'c' ]
- */
-function insertItem(/* arr, item, index */) {
-  throw new Error('Not implemented');
+function insertItem(arr, item, index) {
+  return arr.splice(index, 0, item);
 }
 
-/**
- * Returns the n first items of the specified array.
- *
- * @param {array} arr - The input array.
- * @param {number} n - Number of items.
- *
- * @example
- *    getHead([ 1, 3, 4, 5 ], 2) => [ 1, 3 ]
- *    getHead([ 'a', 'b', 'c', 'd'], 3) => [ 'a', 'b', 'c' ]
- *    getHead([ 'a', 'b', 'c', 'd'], 0) => []
- */
-function getHead(/* arr, n */) {
-  throw new Error('Not implemented');
+function getHead(arr, n) {
+  return arr.slice(0, n);
 }
 
-/**
- * Returns the n last items of the specified array.
- *
- * @param {array} arr - The input array.
- * @param {number} n - Number of items.
- *
- * @example
- *    getTail([ 1, 3, 4, 5 ], 2) => [ 4, 5 ]
- *    getTail([ 'a', 'b', 'c', 'd'], 3) => [ 'b', 'c', 'd' ]
- *    getTail([ 'a', 'b', 'c', 'd'], 0) => []
- */
-function getTail(/* arr, n */) {
-  throw new Error('Not implemented');
+function getTail(arr, n) {
+  return arr.slice(arr.length - n);
 }
 
-/**
- * Returns the doubled array - elements of the specified array
- * are repeated twice using original order.
- *
- * @param {array} arr - The input array.
- * @return {array} - The doubled array.
- *
- * @example
- *    doubleArray(['Ace', 10, true])  => ['Ace', 10, true, 'Ace', 10, true]
- *    doubleArray([0, 1, 2, 3, 4, 5]) => [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5]
- *    doubleArray([]) => []
- */
-function doubleArray(/* arr */) {
-  throw new Error('Not implemented');
+function doubleArray(arr) {
+  return arr.concat(arr);
 }
 
-/**
- * Concatenates all elements from specified array into single string with ',' delimiter.
- *
- * @param {array} arr - The input array.
- * @return {string} - The concatenated string.
- *
- * @example
- *    toStringList([0, false, 'cat', NaN, true, '']) => '0,false,cat,NaN,true,'
- *    toStringList([1, 2, 3, 4, 5]) => '1,2,3,4,5'
- *    toStringList(['rock', 'paper', 'scissors']) => 'rock,paper,scissors'
- */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.join(',');
 }
 
-/**
- * Returns array containing only unique values from the specified array.
- *
- * @param {array} arr - The input array.
- * @return {array} - The array with unique values.
- *
- * @example
- *   distinct([ 1, 2, 3, 3, 2, 1 ]) => [ 1, 2, 3 ]
- *   distinct([ 'a', 'a', 'a', 'a' ])  => [ 'a' ]
- *   distinct([ 1, 1, 2, 2, 3, 3, 4, 4]) => [ 1, 2, 3, 4]
- *   distinct([]) => []
- */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return Array.from(new Set(arr));
 }
 
 /**
@@ -198,19 +97,8 @@ function createNDimensionalArray(/* n, size */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Flattens a nested array into a single-level array.
- *
- * @param {array} nestedArray - The nested array to be flattened.
- * @return {array} - A single-level array.
- *
- * @example
- *    flattenArray([1, [2, [3, 4], 5], 6]) => [1, 2, 3, 4, 5, 6]
- *    flattenArray(['a', ['b', ['c', 'd'], 'e'], 'f']) => ['a', 'b', 'c', 'd', 'e', 'f']
- *    flattenArray([1, 2, 3, 4]) => [1, 2, 3, 4]
- */
-function flattenArray(/* nestedArray */) {
-  throw new Error('Not implemented');
+function flattenArray(nestedArray) {
+  return nestedArray.flat(Infinity);
 }
 
 /**
