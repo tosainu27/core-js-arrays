@@ -101,21 +101,8 @@ function flattenArray(nestedArray) {
   return nestedArray.flat(Infinity);
 }
 
-/**
- * Projects each element of the specified array to a sequence
- * and flattens the resulting sequences into one array.
- *
- * @param {array} arr - The input array
- * @param {Function} childrenSelector - A transform function to apply to each element
- *                                     that returns an array of children
- * @return {array} - The flatted array
- *
- * @example
- *   selectMany([[1, 2], [3, 4], [5, 6]], (x) => x) =>   [ 1, 2, 3, 4, 5, 6 ]
- *   selectMany(['one','two','three'], (x) => x.split('')) =>   ['o','n','e','t','w','o','t','h','r','e','e']
- */
-function selectMany(/* arr, childrenSelector */) {
-  throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {
+  return arr.flatMap(childrenSelector);
 }
 
 /**
@@ -135,20 +122,10 @@ function calculateBalance(/* arr */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Breaks an array into chunks of the specified size.
- *
- * @param {array} arr - The array to be broken into chunks.
- * @param {number} chunkSize - The size of each chunk.
- * @return {array} - An array of chunks.
- *
- * @example
- *    createChunks([1, 2, 3, 4, 5, 6, 7], 3) => [[1, 2, 3], [4, 5, 6], [7]]
- *    createChunks(['a', 'b', 'c', 'd', 'e'], 2) => [['a', 'b'], ['c', 'd'], ['e']]
- *    createChunks([10, 20, 30, 40, 50], 1) => [[10], [20], [30], [40], [50]]
- */
-function createChunks(/* arr, chunkSize */) {
-  throw new Error('Not implemented');
+function createChunks(arr, chunkSize) {
+  return [...Array(Math.ceil(arr.length / chunkSize))].map(() =>
+    arr.splice(0, chunkSize)
+  );
 }
 
 /**
@@ -183,20 +160,8 @@ function getElementByIndices(/* arr, indices */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns the number of all falsy values in the specified array.
- *
- * @param {array} arr - The input array.
- * @return {number} - The number of all falsy values.
- *
- * @example
- *  getFalsyValuesCount([]) => 0
- *  getFalsyValuesCount([ 1, '', 3 ]) => 1
- *  getFalsyValuesCount([ -1, 'false', null, 0 ]) => 2
- *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
- */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  return arr.reduce((sum, cur) => sum + (!cur ? 1 : 0), 0);
 }
 
 /**
@@ -334,21 +299,20 @@ function shiftArray(/* arr, n */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Sorts digit names.
- *
- * @param {array} arr - The input array.
- * @return {array} - Sorted array.
- *
- * @example
- *   sortDigitNamesByNumericOrder([]) => []
- *   sortDigitNamesByNumericOrder([ 'nine','one' ]) => [ 'one', 'nine' ]
- *   sortDigitNamesByNumericOrder([ 'one','two','three' ]) => [ 'one','two', 'three' ]
- *   sortDigitNamesByNumericOrder([ 'nine','eight','nine','eight' ]) => [ 'eight','eight','nine','nine']
- *   sortDigitNamesByNumericOrder([ 'one','one','one','zero' ]) => [ 'zero','one','one','one' ]
- */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const num = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
+  return arr.sort((a, b) => num.indexOf(a) - num.indexOf(b));
 }
 
 /**
