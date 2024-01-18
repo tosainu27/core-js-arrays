@@ -261,25 +261,20 @@ function findCommonElements(/* arr1, arr2 */) {
  *    findLongestIncreasingSubsequence([50, 3, 10, 7, 40, 80]) => 3
  */
 function findLongestIncreasingSubsequence(/* nums */) {
+  //   let acc = 0;
+  //   return nums.reduce((all, one, index) => {
+  //     if (one > nums[index - 1]) {
+  //       acc += 1;
+  //     }
+  //     return acc;
+  //   }, 0);
   throw new Error('Not implemented');
 }
 
-/**
- * Propagates every item in sequence its position times
- * Returns an array that consists of: one first item, two second items, three third items etc.
- *
- * @param {array} arr - The input array
- * @return {array}
- *
- * @example :
- *  propagateItemsByPositionIndex([]) => []
- *  propagateItemsByPositionIndex([ 1 ]) => [ 1 ]
- *  propagateItemsByPositionIndex([ 'a', 'b' ]) => [ 'a', 'b','b' ]
- *  propagateItemsByPositionIndex([ 'a', 'b', 'c', null ]) => [ 'a', 'b', 'b', 'c', 'c', 'c',  null, null, null, null ]
- *  propagateItemsByPositionIndex([ 1,2,3,4,5 ]) => [ 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5 ]
- */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  return arr
+    .map((item, index) => Array(index + 1).fill(item))
+    .flatMap((x) => x);
 }
 
 /**
@@ -315,27 +310,18 @@ function sortDigitNamesByNumericOrder(arr) {
   return arr.sort((a, b) => num.indexOf(a) - num.indexOf(b));
 }
 
-/**
- * Swaps the head and tail of the specified array:
- * the head (first half) of array move to the end, the tail (last half) move to the start.
- * The middle element (if exists) leave on the same position. *
- *
- * @param {array} arr - The input array.
- * @return {array} - The swapped array.
- *
- * @example
- *   [ 1, 2, 3, 4, 5 ]   =>  [ 4, 5, 3, 1, 2 ]
- *    \----/   \----/
- *     head     tail
- *
- *   swapHeadAndTail([ 1, 2 ]) => [ 2, 1 ]
- *   swapHeadAndTail([ 1, 2, 3, 4, 5, 6, 7, 8 ]) =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
- *   swapHeadAndTail([ 1 ]) => [ 1 ]
- *   swapHeadAndTail([]) => []
- *
- */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  if (arr.length % 2 === 0) {
+    return [
+      arr.slice(arr.length / 2, arr.length),
+      arr.slice(0, arr.length / 2),
+    ].flatMap((x) => x);
+  }
+  return [
+    arr.slice(Math.ceil(arr.length / 2), arr.length),
+    arr[Math.floor(arr.length / 2)],
+    arr.slice(0, Math.floor(arr.length / 2)),
+  ].flatMap((x) => x);
 }
 
 module.exports = {
