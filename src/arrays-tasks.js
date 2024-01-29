@@ -128,20 +128,8 @@ function createChunks(arr, chunkSize) {
   );
 }
 
-/**
- * Generates an array of odd numbers of the specified length.
- *
- * @param {number} len - The length of an array.
- * @return {array} - An array of odd numbers.
- *
- * @example
- *    generateOdds(0) => []
- *    generateOdds(1) => [ 1 ]
- *    generateOdds(2) => [ 1, 3 ]
- *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
- */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  return [...Array(len)].map((item, index) => index * 2 + 1);
 }
 
 /**
@@ -186,19 +174,15 @@ function getIdentityMatrix(/* n */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns an array containing indices of odd elements in the input array.
- *
- * @param {array} numbers - The array of numbers.
- * @return {array} - An array containing indices of odd elements.
- *
- * @example
- *    getIndicesOfOddNumbers([1, 2, 3, 4, 5]) => [0, 2, 4]
- *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
- *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
- */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  const arr = [];
+  numbers.map((item, i) => {
+    if (item % 2 !== 0) {
+      arr.push(i);
+    }
+    return arr;
+  });
+  return arr;
 }
 
 /**
@@ -233,20 +217,15 @@ function getMaxItems(/* arr, n */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Finds and returns an array containing only the common elements found in two arrays.
- *
- * @param {array} arr1 - The first array.
- * @param {array} arr2 - The second array.
- * @return {array} - An array containing common elements.
- *
- * @example
- *    findCommonElements([1, 2, 3], [2, 3, 4]) => [ 2, 3 ]
- *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
- *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
- */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  const arr = [];
+  arr1.map((item) => {
+    if (arr2.find((elem) => item === elem)) {
+      arr.push(item);
+    }
+    return arr;
+  });
+  return arr;
 }
 
 /**
